@@ -1,0 +1,146 @@
+/*// BASE STYLES //*/
+
+html, body{
+    height: 100%;
+    width:100%;
+    overflow: hidden;
+    margin: 0;
+  }
+  
+  .grass, .sky, .road{
+    position: relative;
+  }
+  
+  .sky{
+    height: 40%;
+    background: skyblue;
+  }
+  
+  .grass{
+    height: 30%;
+    background: seagreen;
+    -webkit-z-index: 2;
+    -moz-z-index: 2;
+    -ms-z-index: 2;
+    -o-z-index: 2;
+    z-index: 2;
+  }
+  
+  .road{
+    height: 30%;
+    background: dimgrey;
+    box-sizing: border-box;
+    border-top: 10px solid grey;
+    border-bottom: 10px solid grey;
+    width: 100%;
+  }
+  
+  .lines{
+    box-sizing: border-box;
+    border: 5px dashed #fff;
+    height: 0px;
+    width: 100%;
+    position: absolute;
+    top: 45%;
+  }
+  
+  /*// ELEMENTS TO ANIMATE //*/
+  .sky{
+    animation: sky 60s 2s both linear infinite;
+  }
+
+  .sunstar{
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    width: 200px;
+    height: 200px;
+    background:  #f9d71c ;
+    border-radius: 150px;
+    z-index: 1;
+    border: 5px solid rgba(249, 216, 28, 0.1);
+    animation: sun 60s 2s both linear infinite;
+
+  }
+
+  .mario{
+      position: absolute;
+      top: -40px;
+      left: 0px;
+      z-index: 9;
+      animation: drive 3s both infinite linear,
+                 jump 0.3s 1.2s ease;
+  }
+
+  .luigi{
+      position: absolute;
+      top: 70px;
+      left: 0;
+      z-index: 10;
+      animation-name: drive;
+      animation-duration: 5s;
+      animation-fill-mode: both;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+  }
+
+  .cloud{
+      position: absolute;
+      z-index: 2;
+  }
+
+  .cloud:nth-child(1){
+      width: 200px;
+      top: 120px;
+      opacity: 0.5;
+      animation: wind 80s linear infinite reverse;
+  }
+
+  .cloud:nth-child(2){
+    width: 300px;
+    top: 0px;
+    opacity: 1;
+    animation: wind 50s linear infinite reverse;
+}
+  
+  /*// KEYFRAMES //*/
+  
+  @keyframes drive{
+      from{
+          transform: translateX(-500)
+      }
+      to{
+          transform: translateX(1600px)
+      }
+  }
+  
+  @keyframes wind{
+      from{
+          left: -300px;
+      }
+      to{
+          left: 100%;
+      }
+  }
+
+  @keyframes jump{
+      0%{ top: -40px }
+      50% { top: -100px }
+      100% { top: -40px }
+  }
+
+  @keyframes sky{
+    0%{ background: skyblue }
+    25%{ background: rgb(31, 127, 165) }
+    50%{ background: rgb(4, 47, 65) }
+    75%{ background:  rgb(31, 127, 165) }
+    100%{ background: skyblue }
+  }
+
+  @keyframes sun{
+    0%{ background: #f9d71c; transform: translateY(0px); z-index: 1; opacity: 1;  }
+    25%{ background: #f9d71c; transform: translateY(400px); z-index: -1; opacity: 1; }
+    50%{ background: #f9d71c; transform: translateY(420px); z-index: -2; opacity: 0; }
+    75%{ background:  #f9d71c; transform: translateY(400px); z-index: -1; opacity: 1; }
+    100%{ background: #f9d71c; transform: translateY(0px); z-index: 1; opacity: 1; }
+  }
